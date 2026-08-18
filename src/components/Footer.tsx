@@ -1,13 +1,17 @@
 import React from 'react';
 import { RoutePath } from '../types';
 import { GOOGLE_PLAY_URL } from '../config';
-import { Shield, FileText, Github, Heart } from 'lucide-react';
+import { useLanguage } from '../context/LanguageContext';
+import { LanguageSelector } from './LanguageSelector';
+import { Github } from 'lucide-react';
 
 interface FooterProps {
   onNavigate: (route: RoutePath) => void;
 }
 
 export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
+  const { t } = useLanguage();
+
   return (
     <footer className="bg-white border-t border-slate-100 text-slate-500 text-xs transition-colors">
       <div className="max-w-7xl mx-auto px-6 sm:px-10 lg:px-12 py-10">
@@ -29,7 +33,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
             <div className="hidden sm:block h-4 w-px bg-slate-200" />
 
             <p className="text-slate-400 font-medium">
-              © {new Date().getFullYear()} Magic TV. Port independiente basado en Kodi Nexus 20.5.
+              {t.footer.copyright}
             </p>
           </div>
 
@@ -39,25 +43,25 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
               onClick={() => onNavigate('home')}
               className="hover:text-[#9D4EDD] transition-colors cursor-pointer"
             >
-              Inicio
+              {t.footer.navHome}
             </button>
             <button
               onClick={() => onNavigate('features')}
               className="hover:text-[#9D4EDD] transition-colors cursor-pointer"
             >
-              Funciones
+              {t.footer.navFeatures}
             </button>
             <button
               onClick={() => onNavigate('privacy')}
               className="hover:text-[#00D2FF] transition-colors cursor-pointer"
             >
-              Privacidad
+              {t.footer.navPrivacy}
             </button>
             <button
               onClick={() => onNavigate('terms')}
               className="hover:text-[#9D4EDD] transition-colors cursor-pointer"
             >
-              Términos
+              {t.footer.navTerms}
             </button>
             <a
               href={GOOGLE_PLAY_URL}
@@ -71,12 +75,15 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
                 <path d="M13.5 12.1L3.6 22.2c.4.4 1.1.5 1.8.1l11.5-6.6-3.4-3.6z" fill="#FF3366"/>
                 <path d="M13.5 11.9l3.4-3.6L5.4 1.7C4.7 1.3 4 1.4 3.6 1.8l9.9 10.1z" fill="#00E676"/>
               </svg>
-              <span>Google Play</span>
+              <span>{t.footer.navPlayStore}</span>
             </a>
           </div>
 
-          {/* Social / Minimal Badges */}
-          <div className="flex items-center gap-2">
+          {/* Controls: Language Selector & Badge */}
+          <div className="flex items-center gap-3">
+            {/* Footer Language Selector */}
+            <LanguageSelector variant="footer" />
+
             <a
               href="https://github.com"
               target="_blank"
@@ -96,10 +103,10 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
         {/* Bottom micro disclaimer */}
         <div className="mt-8 pt-6 border-t border-slate-100/80 flex flex-col sm:flex-row items-center justify-between text-[11px] text-slate-400 gap-3">
           <p>
-            Kodi® es una marca registrada de la Fundación XBMC. Google Play y el logotipo de Google Play son marcas comerciales de Google LLC.
+            {t.footer.trademark}
           </p>
           <div className="flex items-center gap-1">
-            <span>Licenciado bajo GNU GPL v2 (Kodi Nexus 20.5)</span>
+            <span>{t.footer.license}</span>
           </div>
         </div>
 

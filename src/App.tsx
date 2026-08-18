@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { RoutePath } from './types';
 import { GOOGLE_PLAY_URL } from './config';
+import { LanguageProvider, useLanguage } from './context/LanguageContext';
 import { Navbar } from './components/Navbar';
 import { Hero } from './components/Hero';
 import { Features } from './components/Features';
@@ -11,7 +12,8 @@ import { TermsAndConditions } from './components/TermsAndConditions';
 import { Footer } from './components/Footer';
 import { Sparkles } from 'lucide-react';
 
-export default function App() {
+function AppContent() {
+  const { t } = useLanguage();
   const [currentRoute, setCurrentRoute] = useState<RoutePath>('home');
 
   // Sync with Browser Hash for direct URLs (#privacy, #terms, etc.)
@@ -111,13 +113,13 @@ export default function App() {
                   <div className="max-w-2xl">
                     <span className="inline-flex items-center gap-1.5 px-4 py-1.5 rounded-full bg-blue-500/10 text-[#00D2FF] text-xs font-extrabold uppercase tracking-widest mb-4 border border-[#00D2FF]/20">
                       <Sparkles className="w-3.5 h-3.5 text-[#00D2FF]" />
-                      Instalación Oficial y Segura
+                      {t.preFooter.badge}
                     </span>
                     <h2 className="text-3xl sm:text-4xl lg:text-[42px] font-black text-white tracking-tight leading-tight">
-                      Lleva el mejor reproductor a tu Android y TV
+                      {t.preFooter.title}
                     </h2>
                     <p className="mt-3 text-slate-400 text-sm sm:text-base leading-relaxed font-normal">
-                      Descarga Magic TV directamente desde Google Play Store con actualizaciones automáticas y compatibilidad garantizada.
+                      {t.preFooter.subtitle}
                     </p>
                   </div>
 
@@ -127,7 +129,7 @@ export default function App() {
                       href={GOOGLE_PLAY_URL}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="w-full sm:w-auto px-8 py-4 rounded-2xl bg-white hover:bg-slate-100 text-slate-950 font-black text-base shadow-2xl active:scale-95 transition-all flex items-center justify-center gap-3 border border-white"
+                      className="w-full sm:w-auto px-8 py-4 rounded-2xl bg-white hover:bg-slate-100 text-slate-950 font-black text-base shadow-2xl active:scale-95 transition-all flex items-center justify-center gap-3 border border-white group cursor-pointer"
                     >
                       <svg className="w-6 h-6 flex-shrink-0" viewBox="0 0 24 24" fill="none">
                         <path d="M3.6 1.8A1.8 1.8 0 0 0 3 3.3v17.4c0 .6.2 1.1.6 1.5l.1.1 9.8-9.8v-.2L3.7 2.4l-.1-.6z" fill="#00D2FF"/>
@@ -135,7 +137,7 @@ export default function App() {
                         <path d="M13.5 12.1L3.6 22.2c.4.4 1.1.5 1.8.1l11.5-6.6-3.4-3.6z" fill="#FF3366"/>
                         <path d="M13.5 11.9l3.4-3.6L5.4 1.7C4.7 1.3 4 1.4 3.6 1.8l9.9 10.1z" fill="#00E676"/>
                       </svg>
-                      <span>Obtener en Google Play</span>
+                      <span className="group-hover:text-[#9D4EDD] transition-colors">{t.preFooter.cta}</span>
                     </a>
                   </div>
                 </div>
@@ -151,5 +153,13 @@ export default function App() {
       />
 
     </div>
+  );
+}
+
+export default function App() {
+  return (
+    <LanguageProvider>
+      <AppContent />
+    </LanguageProvider>
   );
 }

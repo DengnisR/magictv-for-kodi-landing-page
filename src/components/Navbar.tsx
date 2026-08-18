@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { RoutePath } from '../types';
 import { GOOGLE_PLAY_URL } from '../config';
+import { useLanguage } from '../context/LanguageContext';
 import { Tv, Shield, FileText, Menu, X, Sparkles, HelpCircle, Smartphone } from 'lucide-react';
 
 interface NavbarProps {
@@ -9,6 +10,7 @@ interface NavbarProps {
 }
 
 export const Navbar: React.FC<NavbarProps> = ({ currentRoute, onNavigate }) => {
+  const { t } = useLanguage();
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
@@ -41,7 +43,7 @@ export const Navbar: React.FC<NavbarProps> = ({ currentRoute, onNavigate }) => {
           <button
             id="nav-logo-btn"
             onClick={() => handleNavClick('home')}
-            className="flex items-center gap-3 text-left group transition-transform focus:outline-none"
+            className="flex items-center gap-3 text-left group transition-transform focus:outline-none cursor-pointer"
           >
             <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-[#00D2FF] to-[#9D4EDD] flex items-center justify-center shadow-lg group-hover:scale-105 transition-transform">
               <span className="text-white font-extrabold text-xl tracking-tighter">M</span>
@@ -52,14 +54,14 @@ export const Navbar: React.FC<NavbarProps> = ({ currentRoute, onNavigate }) => {
                   Magic TV
                 </span>
                 <span className="inline-block px-2 py-0.5 rounded-full bg-blue-50 text-[#00D2FF] text-[10px] font-bold tracking-wider uppercase border border-blue-100/80">
-                  Android Port
+                  {t.nav.androidPort}
                 </span>
               </div>
             </div>
           </button>
 
           {/* Desktop Navigation Links */}
-          <nav className="hidden lg:flex items-center gap-8 xl:gap-10 text-sm font-semibold text-slate-500">
+          <nav className="hidden lg:flex items-center gap-8 xl:gap-9 text-sm font-semibold text-slate-500">
             <button
               id="nav-link-home"
               onClick={() => handleNavClick('home')}
@@ -69,7 +71,7 @@ export const Navbar: React.FC<NavbarProps> = ({ currentRoute, onNavigate }) => {
                   : 'hover:text-[#00D2FF]'
               }`}
             >
-              Inicio
+              {t.nav.home}
             </button>
 
             <button
@@ -81,7 +83,7 @@ export const Navbar: React.FC<NavbarProps> = ({ currentRoute, onNavigate }) => {
                   : 'hover:text-[#00D2FF]'
               }`}
             >
-              Funciones
+              {t.nav.features}
             </button>
 
             <button
@@ -93,7 +95,7 @@ export const Navbar: React.FC<NavbarProps> = ({ currentRoute, onNavigate }) => {
                   : 'hover:text-[#00D2FF]'
               }`}
             >
-              Dispositivos
+              {t.nav.compatibility}
             </button>
 
             <button
@@ -105,7 +107,7 @@ export const Navbar: React.FC<NavbarProps> = ({ currentRoute, onNavigate }) => {
                   : 'hover:text-[#00D2FF]'
               }`}
             >
-              Preguntas
+              {t.nav.faq}
             </button>
 
             <div className="h-4 w-px bg-slate-200" />
@@ -120,7 +122,7 @@ export const Navbar: React.FC<NavbarProps> = ({ currentRoute, onNavigate }) => {
               }`}
             >
               <Shield className="w-3.5 h-3.5 text-[#00D2FF]" />
-              Privacidad
+              {t.nav.privacy}
             </button>
 
             <button
@@ -133,41 +135,40 @@ export const Navbar: React.FC<NavbarProps> = ({ currentRoute, onNavigate }) => {
               }`}
             >
               <FileText className="w-3.5 h-3.5 text-[#9D4EDD]" />
-              Términos
+              {t.nav.terms}
             </button>
           </nav>
 
-          {/* Google Play Store CTA */}
+          {/* Header Action: Google Play Store CTA */}
           <div className="hidden sm:flex items-center gap-3">
             <a
               id="header-playstore-btn"
               href={GOOGLE_PLAY_URL}
               target="_blank"
               rel="noopener noreferrer"
-              className="bg-slate-900 text-white hover:bg-slate-800 px-6 py-2.5 rounded-2xl font-bold text-xs shadow-md active:scale-95 transition-all duration-200 flex items-center gap-2.5 border border-slate-700"
+              className="bg-slate-900 text-white hover:bg-slate-800 px-5 py-2.5 rounded-2xl font-bold text-xs shadow-md active:scale-95 transition-all duration-200 flex items-center gap-2.5 border border-slate-700"
             >
-              {/* Google Play Triangle vector */}
-              <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none">
+              <svg className="w-4 h-4 flex-shrink-0" viewBox="0 0 24 24" fill="none">
                 <path d="M3.6 1.8A1.8 1.8 0 0 0 3 3.3v17.4c0 .6.2 1.1.6 1.5l.1.1 9.8-9.8v-.2L3.7 2.4l-.1-.6z" fill="#00D2FF"/>
                 <path d="M16.8 15.6l-3.3-3.3v-.2l3.3-3.3.1.1 3.9 2.2c1.1.6 1.1 1.7 0 2.3l-3.9 2.2-.1.1z" fill="#FFD200"/>
                 <path d="M13.5 12.1L3.6 22.2c.4.4 1.1.5 1.8.1l11.5-6.6-3.4-3.6z" fill="#FF3366"/>
                 <path d="M13.5 11.9l3.4-3.6L5.4 1.7C4.7 1.3 4 1.4 3.6 1.8l9.9 10.1z" fill="#00E676"/>
               </svg>
               <div className="text-left leading-tight">
-                <div className="text-[9px] text-slate-400 font-medium">DISPONIBLE EN</div>
-                <div className="text-xs font-black text-white">Google Play</div>
+                <div className="text-[8px] text-slate-400 font-medium">{t.nav.availableOn}</div>
+                <div className="text-xs font-black text-white">{t.nav.googlePlay}</div>
               </div>
             </a>
           </div>
 
-          {/* Mobile Menu Button */}
+          {/* Mobile Menu & Quick Controls */}
           <div className="flex lg:hidden items-center gap-2">
             <a
               id="mobile-playstore-quick-btn"
               href={GOOGLE_PLAY_URL}
               target="_blank"
               rel="noopener noreferrer"
-              className="px-3.5 py-2 rounded-xl bg-slate-900 text-white shadow-sm text-xs font-bold sm:hidden flex items-center gap-1.5"
+              className="px-3 py-2 rounded-xl bg-slate-900 text-white shadow-sm text-xs font-bold sm:hidden flex items-center gap-1.5"
             >
               <svg className="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none">
                 <path d="M3.6 1.8A1.8 1.8 0 0 0 3 3.3v17.4c0 .6.2 1.1.6 1.5l.1.1 9.8-9.8v-.2L3.7 2.4l-.1-.6z" fill="#00D2FF"/>
@@ -175,8 +176,9 @@ export const Navbar: React.FC<NavbarProps> = ({ currentRoute, onNavigate }) => {
                 <path d="M13.5 12.1L3.6 22.2c.4.4 1.1.5 1.8.1l11.5-6.6-3.4-3.6z" fill="#FF3366"/>
                 <path d="M13.5 11.9l3.4-3.6L5.4 1.7C4.7 1.3 4 1.4 3.6 1.8l9.9 10.1z" fill="#00E676"/>
               </svg>
-              <span>Play Store</span>
+              <span>Play</span>
             </a>
+
             <button
               id="mobile-menu-toggle"
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
@@ -201,8 +203,9 @@ export const Navbar: React.FC<NavbarProps> = ({ currentRoute, onNavigate }) => {
               }`}
             >
               <Tv className="w-4 h-4 text-[#9D4EDD]" />
-              Inicio
+              {t.nav.home}
             </button>
+
             <button
               id="m-nav-features"
               onClick={() => handleNavClick('features')}
@@ -211,8 +214,9 @@ export const Navbar: React.FC<NavbarProps> = ({ currentRoute, onNavigate }) => {
               }`}
             >
               <Sparkles className="w-4 h-4 text-[#00D2FF]" />
-              Funciones
+              {t.nav.features}
             </button>
+
             <button
               id="m-nav-compatibility"
               onClick={() => handleNavClick('compatibility')}
@@ -221,8 +225,9 @@ export const Navbar: React.FC<NavbarProps> = ({ currentRoute, onNavigate }) => {
               }`}
             >
               <Smartphone className="w-4 h-4 text-[#00D2FF]" />
-              Dispositivos
+              {t.nav.compatibility}
             </button>
+
             <button
               id="m-nav-faq"
               onClick={() => handleNavClick('faq')}
@@ -231,12 +236,12 @@ export const Navbar: React.FC<NavbarProps> = ({ currentRoute, onNavigate }) => {
               }`}
             >
               <HelpCircle className="w-4 h-4 text-[#9D4EDD]" />
-              Preguntas
+              {t.nav.faq}
             </button>
 
             <div className="pt-2 pb-1 border-t border-slate-100">
               <span className="text-[10px] uppercase font-bold text-slate-400 px-4 tracking-wider">
-                Políticas y Legal
+                {t.nav.legalSection}
               </span>
             </div>
 
@@ -248,8 +253,9 @@ export const Navbar: React.FC<NavbarProps> = ({ currentRoute, onNavigate }) => {
               }`}
             >
               <Shield className="w-4 h-4 text-[#00D2FF]" />
-              Políticas de Privacidad
+              {t.nav.privacy}
             </button>
+
             <button
               id="m-nav-terms"
               onClick={() => handleNavClick('terms')}
@@ -258,7 +264,7 @@ export const Navbar: React.FC<NavbarProps> = ({ currentRoute, onNavigate }) => {
               }`}
             >
               <FileText className="w-4 h-4 text-[#9D4EDD]" />
-              Términos y Condiciones
+              {t.nav.terms}
             </button>
 
             <div className="pt-2">
@@ -275,7 +281,7 @@ export const Navbar: React.FC<NavbarProps> = ({ currentRoute, onNavigate }) => {
                   <path d="M13.5 12.1L3.6 22.2c.4.4 1.1.5 1.8.1l11.5-6.6-3.4-3.6z" fill="#FF3366"/>
                   <path d="M13.5 11.9l3.4-3.6L5.4 1.7C4.7 1.3 4 1.4 3.6 1.8l9.9 10.1z" fill="#00E676"/>
                 </svg>
-                <span>Descargar en Google Play</span>
+                <span>{t.preFooter.cta}</span>
               </a>
             </div>
           </div>
