@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { RoutePath } from '../types';
-import { ArrowLeft, FileText, ExternalLink, Copy, Check, Printer, Mail, AlertTriangle, Scale } from 'lucide-react';
+import { ArrowLeft, FileText, ExternalLink, Copy, Check, Printer, Mail, AlertTriangle, Radio } from 'lucide-react';
 
 interface TermsAndConditionsProps {
   onNavigate: (route: RoutePath) => void;
@@ -108,20 +108,37 @@ export const TermsAndConditions: React.FC<TermsAndConditionsProps> = ({ onNaviga
             </p>
           </section>
 
+          {/* New Section: Local Streaming Architecture & cachetv Disclaimer */}
+          <section className="p-6 rounded-2xl bg-purple-50/70 border border-purple-100/90">
+            <h2 className="text-lg font-bold text-purple-950 mb-2 flex items-center gap-2">
+              <Radio className="w-5 h-5 text-[#9D4EDD]" />
+              Local Streaming Architecture &amp; cachetv Disclaimer
+            </h2>
+            <p className="text-sm text-slate-700 mb-3 leading-relaxed">
+              The Application includes internal technical configurations (including local IP network handling) to interface with <em>cachetv</em>—an open-source media streaming server software. The Service Provider integrates this functionality strictly as a technical client interface.
+            </p>
+            <div className="pt-2">
+              <p className="font-bold text-xs uppercase tracking-wider text-purple-900 mb-2">
+                Content Liability Exclusions:
+              </p>
+              <ul className="list-disc pl-5 space-y-1.5 text-xs sm:text-sm text-slate-700">
+                <li>The Service Provider <strong>does not provide, host, supply, control, or index any IPTV playlists, streams, channels, or media content</strong> accessed through <em>cachetv</em> or local IP configurations.</li>
+                <li>Host providers, network administrators, and end-users are solely and independently responsible for any IPTV content, playlists, or streams configured, distributed, or rendered through their local <em>cachetv</em> servers or network setups.</li>
+              </ul>
+            </div>
+          </section>
+
           <section>
             <h2 className="text-lg font-bold text-slate-900 mb-3">
-              Acceptable Use &amp; User-Provided Content
+              Acceptable Use &amp; User Responsibilities
             </h2>
             <p className="mb-3">
-              The Application is provided strictly as a neutral media playing interface. The Service Provider <strong>does not provide, host, bundle, or distribute any media content, channels, playlists, or add-ons</strong>.
-            </p>
-            <p className="mb-2 font-medium text-slate-700">
-              You agree that you are solely responsible for all content, streams, and media played through the Application. You agree not to use the Application to:
+              The Application is provided strictly as a neutral media playing tool. You agree that you are solely responsible for all media streams accessed or played through the Application. You agree not to use the Application to:
             </p>
             <ul className="list-disc pl-6 space-y-1.5 text-sm text-slate-600">
-              <li>Stream, view, or distribute copyrighted content without authorization from the copyright holder.</li>
-              <li>Access illegal or unauthorized media streams in your jurisdiction.</li>
-              <li>Engage in activities that violate local or international intellectual property laws.</li>
+              <li>Stream, view, or distribute copyrighted media without explicit authorization from the rightful copyright holder.</li>
+              <li>Access illegal or unauthorized media streams in your local jurisdiction.</li>
+              <li>Violate any local or international intellectual property, copyright, or broadcasting laws.</li>
             </ul>
           </section>
 
@@ -130,19 +147,19 @@ export const TermsAndConditions: React.FC<TermsAndConditionsProps> = ({ onNaviga
               Intellectual Property Rights
             </h2>
             <p>
-              All core engine source components originating from Kodi remain licensed under GPLv2. Custom branding, specific interface configurations, and original non-GPL assets created by DengnisR remain protected by applicable copyright law, subject to GPLv2 compliance.
+              All core engine components originating from Kodi remain licensed under GPLv2. Custom branding, specific interface layouts, and original non-GPL assets created by DengnisR remain protected by applicable copyright law, subject to GPLv2 compliance.
             </p>
           </section>
 
           <section>
             <h2 className="text-lg font-bold text-slate-900 mb-2">
-              Device Security &amp; Network Usage
+              Device Security &amp; Data Charges
             </h2>
             <p className="mb-2">
-              The Application requires internet connectivity to stream user-selected media. You are responsible for any data charges or roaming fees incurred with your mobile network provider while using the Application.
+              The Application requires local network or internet access to render media streams. You accept full responsibility for any data usage, internet fees, or local network bandwidth consumed during operation.
             </p>
             <p className="text-xs sm:text-sm text-slate-500">
-              Modifying your device's operating system (jailbreaking or rooting) may compromise device security and lead to unexpected software behavior.
+              Modifying your device's operating system (rooting or jailbreaking) may compromise security and application stability.
             </p>
           </section>
 
@@ -174,7 +191,7 @@ export const TermsAndConditions: React.FC<TermsAndConditionsProps> = ({ onNaviga
               Limitation of Liability &amp; Disclaimer of Warranty
             </h2>
             <p className="text-xs sm:text-sm text-amber-900 leading-relaxed font-mono uppercase tracking-tight">
-              THE APPLICATION IS PROVIDED "AS IS" AND "AS AVAILABLE", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED. TO THE MAXIMUM EXTENT PERMITTED BY LAW, THE SERVICE PROVIDER SHALL NOT BE HELD LIABLE FOR ANY INDIRECT, INCIDENTAL, OR CONSEQUENTIAL DAMAGES, INCLUDING LOSS OF DATA, DEVICE DAMAGE, OR LEGAL ISSUES ARISING FROM USER-PROVIDED CONTENT OR UNFAIR USE OF STREAMING SOURCES.
+              THE APPLICATION IS PROVIDED "AS IS" AND "AS AVAILABLE", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED. TO THE MAXIMUM EXTENT PERMITTED BY LAW, THE SERVICE PROVIDER SHALL NOT BE HELD LIABLE FOR ANY INDIRECT, INCIDENTAL, OR CONSEQUENTIAL DAMAGES, INCLUDING LOSS OF DATA, DEVICE DAMAGE, OR LEGAL ISSUES ARISING FROM USER-PROVIDED CONTENT, HOSTED IPTV LISTS, OR THIRD-PARTY STREAMS ACCESSED VIA LOCAL IP/CACHETV SERVERS.
             </p>
           </section>
 
@@ -201,7 +218,7 @@ export const TermsAndConditions: React.FC<TermsAndConditionsProps> = ({ onNaviga
               DSA Compliance Notice (Digital Services Act)
             </h2>
             <p>
-              As a neutral, user-controlled media client that does not host, index, or distribute public third-party content on central servers, inquiries regarding moderation of user-loaded local content should be directed to the user or content host directly. Official communications can be submitted to{' '}
+              As a neutral, user-controlled client player that does not host, index, or distribute public third-party media content on central servers, inquiries regarding moderation of user-provided content should be directed to the respective content host or administrator directly. Official communications can be submitted to{' '}
               <a href="mailto:dengnis97@gmail.com" className="text-[#9D4EDD] font-semibold hover:underline">
                 dengnis97@gmail.com
               </a>.

@@ -1,4 +1,4 @@
-export type RoutePath = 'home' | 'features' | 'guide' | 'compatibility' | 'faq' | 'privacy' | 'terms';
+export type RoutePath = 'home' | 'features' | 'compatibility' | 'faq' | 'privacy' | 'terms';
 
 export interface FeatureItem {
   id: string;
@@ -13,16 +13,5 @@ export interface FaqItem {
   id: string;
   question: string;
   answer: string;
-  category: 'general' | 'kodi' | 'install' | 'legal';
-}
-
-export interface ApkRelease {
-  version: string;
-  buildDate: string;
-  size: string;
-  minAndroid: string;
-  architecture: string;
-  kodiBase: string;
-  downloadUrl: string;
-  sha256: string;
+  category: 'general' | 'kodi' | 'playstore' | 'legal';
 }

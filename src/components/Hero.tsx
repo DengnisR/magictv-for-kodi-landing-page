@@ -1,13 +1,12 @@
 import React, { useState } from 'react';
-import { Download, Play, Tv, Sparkles, Film, Radio, Layers, Settings, ShieldCheck, CheckCircle2, ChevronRight, Volume2, Cpu, Check } from 'lucide-react';
+import { GOOGLE_PLAY_URL } from '../config';
+import { Play, Tv, Sparkles, Film, Radio, Layers, Settings, ShieldCheck, CheckCircle2, ChevronRight, Volume2, Cpu, Check, Network, Puzzle, ArrowRight } from 'lucide-react';
 
 interface HeroProps {
-  onOpenDownload: () => void;
-  onNavigateToGuide: () => void;
   onNavigateToFeatures: () => void;
 }
 
-export const Hero: React.FC<HeroProps> = ({ onOpenDownload, onNavigateToGuide, onNavigateToFeatures }) => {
+export const Hero: React.FC<HeroProps> = ({ onNavigateToFeatures }) => {
   const [activeTab, setActiveTab] = useState<'movies' | 'tv' | 'addons' | 'music'>('movies');
   const [selectedItem, setSelectedItem] = useState(0);
 
@@ -18,19 +17,19 @@ export const Hero: React.FC<HeroProps> = ({ onOpenDownload, onNavigateToGuide, o
       { id: 3, title: 'Deep Ocean Blue', genre: 'Documental • 2026', res: '4K 60FPS', rating: '9.5', color: 'from-blue-600/30 to-[#00D2FF]/40' },
     ],
     tv: [
-      { id: 1, title: 'Deportes en Vivo HD', genre: 'Transmisión PVR • IPTV', res: '1080p 60FPS', rating: 'LIVE', color: 'from-emerald-500/30 to-teal-900/40' },
-      { id: 2, title: 'Noticias 24/7 Global', genre: 'Canales Internacionales', res: 'FHD • EPG', rating: 'LIVE', color: 'from-amber-500/30 to-red-900/40' },
-      { id: 3, title: 'Series & Anime Stream', genre: 'Temporadas Completas', res: '4K HDR', rating: '9.4', color: 'from-[#9D4EDD]/30 to-indigo-900/40' },
+      { id: 1, title: 'Transmisión IPTV & PVR', genre: 'Servidor Local o Remoto', res: '1080p 60FPS', rating: 'LIVE', color: 'from-emerald-500/30 to-teal-900/40' },
+      { id: 2, title: 'IP Personalizada / Multi-Servidor', genre: 'Cualquier Stream M3U / TS', res: 'FHD • EPG', rating: 'LIVE', color: 'from-amber-500/30 to-red-900/40' },
+      { id: 3, title: 'Canales Internacionales', genre: 'Transmisiones Directas', res: '4K HDR', rating: '9.4', color: 'from-[#9D4EDD]/30 to-indigo-900/40' },
     ],
     addons: [
-      { id: 1, title: 'Repositorio Oficial Kodi', genre: '1,200+ Add-ons Disponibles', res: 'Verificado', rating: 'v21.2', color: 'from-[#00D2FF]/30 to-blue-800/40' },
-      { id: 2, title: 'YouTube & Twitch Addon', genre: 'Streaming sin límites', res: '4K AV1', rating: 'Activo', color: 'from-red-500/30 to-[#9D4EDD]/40' },
+      { id: 1, title: 'Repositorio Oficial Kodi', genre: 'Miles de Add-ons Compatibles', res: 'Nexus 20.5', rating: 'v20.5', color: 'from-[#00D2FF]/30 to-blue-800/40' },
+      { id: 2, title: 'YouTube, Twitch & Web Addons', genre: 'Complementos de Terceros', res: '4K AV1', rating: 'Activo', color: 'from-red-500/30 to-[#9D4EDD]/40' },
       { id: 3, title: 'Subtítulos Auto-Sync', genre: 'OpenSubtitles / Subdivx', res: 'Multilingüe', rating: 'Activo', color: 'from-teal-500/30 to-[#00D2FF]/40' },
     ],
     music: [
       { id: 1, title: 'Synthwave & Lo-Fi Lounge', genre: 'Audio Hi-Res FLAC 24-bit', res: 'Lossless', rating: 'HQ', color: 'from-fuchsia-500/30 to-[#9D4EDD]/40' },
       { id: 2, title: 'Radio Internet Global', genre: '50,000+ Emisoras en Directo', res: '320 kbps', rating: 'LIVE', color: 'from-[#00D2FF]/30 to-sky-900/40' },
-      { id: 3, title: 'Biblioteca Local NAS', genre: 'Servidor Samba / NFS / DLNA', res: 'Direct Play', rating: 'Local', color: 'from-indigo-600/30 to-slate-900/40' },
+      { id: 3, title: 'Biblioteca Local NAS & DLNA', genre: 'Servidor Samba / NFS / SMB', res: 'Direct Play', rating: 'Local', color: 'from-indigo-600/30 to-slate-900/40' },
     ],
   };
 
@@ -48,9 +47,14 @@ export const Hero: React.FC<HeroProps> = ({ onOpenDownload, onNavigateToGuide, o
           <div className="lg:col-span-6 flex flex-col items-start text-left">
             
             {/* Pill Badge */}
-            <span className="inline-block px-4 py-1.5 rounded-full bg-blue-50 text-[#00D2FF] text-xs font-extrabold uppercase tracking-widest mb-6 border border-blue-100 shadow-sm">
-              Optimizado para Android • Port de Kodi
-            </span>
+            <div className="flex flex-wrap items-center gap-2 mb-6">
+              <span className="inline-block px-4 py-1.5 rounded-full bg-blue-50 text-[#00D2FF] text-xs font-extrabold uppercase tracking-widest border border-blue-100 shadow-sm">
+                Port Oficial • Kodi Nexus 20.5
+              </span>
+              <span className="inline-block px-3 py-1.5 rounded-full bg-emerald-50 text-emerald-700 text-xs font-bold uppercase tracking-wider border border-emerald-100 shadow-sm">
+                Google Play Store
+              </span>
+            </div>
 
             {/* Headline */}
             <h1 className="text-4xl sm:text-5xl lg:text-[54px] font-black leading-[1.1] text-slate-900 tracking-tight mb-6">
@@ -61,29 +65,56 @@ export const Hero: React.FC<HeroProps> = ({ onOpenDownload, onNavigateToGuide, o
             </h1>
 
             {/* Subtitle */}
-            <p className="text-slate-500 text-base sm:text-lg leading-relaxed mb-8 max-w-lg font-normal">
-              Disfruta de toda la potencia de Kodi en una interfaz ligera, fluida y minimalista diseñada específicamente para tu móvil, TV Box o Android TV.
+            <p className="text-slate-500 text-base sm:text-lg leading-relaxed mb-6 max-w-lg font-normal">
+              Disfruta de toda la potencia y estabilidad de <strong>Kodi Nexus 20.5</strong> en una interfaz optimizada para Android y Android TV. Compatible con cualquier dirección IP de streaming, servidores personalizados y todos tus complementos favoritos.
             </p>
 
-            {/* Action Buttons */}
+            {/* Freedom highlights banner */}
+            <div className="w-full max-w-lg p-4 rounded-2xl bg-gradient-to-r from-blue-50/80 to-purple-50/80 border border-slate-100 mb-8 space-y-2 text-xs text-slate-600">
+              <div className="flex items-center gap-2 font-bold text-slate-800">
+                <Network className="w-4 h-4 text-[#00D2FF]" />
+                <span>Libertad Total de IPs y Servidores:</span>
+              </div>
+              <p className="text-slate-500 leading-normal pl-6">
+                No limita la transmisión: puedes configurar cualquier IP local, remota, servidor IPTV, NAS o enlace externo.
+              </p>
+              <div className="flex items-center gap-2 font-bold text-slate-800 pt-1">
+                <Puzzle className="w-4 h-4 text-[#9D4EDD]" />
+                <span>Compatibilidad 100% de Add-ons:</span>
+              </div>
+              <p className="text-slate-500 leading-normal pl-6">
+                Instala libremente cualquier complemento, repositorio o addon desarrollado para Kodi Nexus 20.5.
+              </p>
+            </div>
+
+            {/* Action Buttons: Google Play Store primary */}
             <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 w-full sm:w-auto mb-10">
-              <button
-                id="hero-cta-download"
-                onClick={onOpenDownload}
-                className="bg-gradient-to-r from-[#00D2FF] to-[#9D4EDD] text-white px-8 py-4 rounded-2xl font-bold text-base shadow-[0_10px_20px_-5px_rgba(157,78,221,0.4)] hover:shadow-none hover:opacity-95 active:scale-95 transition-all duration-200 flex items-center justify-center gap-2.5"
+              <a
+                id="hero-cta-playstore"
+                href={GOOGLE_PLAY_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="bg-slate-900 hover:bg-slate-800 text-white px-7 py-3.5 rounded-2xl font-bold text-base shadow-xl active:scale-95 transition-all duration-200 flex items-center justify-center gap-3 border border-slate-700 group"
               >
-                <Download className="w-5 h-5" />
-                <span>Descargar APK</span>
-                <span className="text-xs py-0.5 px-2 bg-white/20 rounded-full font-semibold">v21.2</span>
-              </button>
+                <svg className="w-6 h-6 flex-shrink-0" viewBox="0 0 24 24" fill="none">
+                  <path d="M3.6 1.8A1.8 1.8 0 0 0 3 3.3v17.4c0 .6.2 1.1.6 1.5l.1.1 9.8-9.8v-.2L3.7 2.4l-.1-.6z" fill="#00D2FF"/>
+                  <path d="M16.8 15.6l-3.3-3.3v-.2l3.3-3.3.1.1 3.9 2.2c1.1.6 1.1 1.7 0 2.3l-3.9 2.2-.1.1z" fill="#FFD200"/>
+                  <path d="M13.5 12.1L3.6 22.2c.4.4 1.1.5 1.8.1l11.5-6.6-3.4-3.6z" fill="#FF3366"/>
+                  <path d="M13.5 11.9l3.4-3.6L5.4 1.7C4.7 1.3 4 1.4 3.6 1.8l9.9 10.1z" fill="#00E676"/>
+                </svg>
+                <div className="text-left leading-tight">
+                  <div className="text-[10px] text-slate-400 font-medium tracking-wider uppercase">DISPONIBLE EN</div>
+                  <div className="text-sm font-black text-white group-hover:text-[#00D2FF] transition-colors">Google Play</div>
+                </div>
+              </a>
 
               <button
-                id="hero-cta-guide"
-                onClick={onNavigateToGuide}
-                className="bg-white px-6 py-4 rounded-2xl font-bold text-slate-700 text-base border border-slate-100 shadow-sm hover:border-[#9D4EDD]/40 hover:text-[#9D4EDD] transition-all flex items-center justify-center gap-2"
+                id="hero-cta-explore-features"
+                onClick={onNavigateToFeatures}
+                className="bg-white px-6 py-3.5 rounded-2xl font-bold text-slate-700 text-sm border border-slate-200 shadow-sm hover:border-[#9D4EDD]/40 hover:text-[#9D4EDD] transition-all flex items-center justify-center gap-2 cursor-pointer"
               >
-                <Layers className="w-4 h-4 text-[#9D4EDD]" />
-                <span>Guía de Instalación</span>
+                <span>Explorar Funciones</span>
+                <ArrowRight className="w-4 h-4 text-[#9D4EDD]" />
               </button>
             </div>
 
@@ -101,14 +132,14 @@ export const Hero: React.FC<HeroProps> = ({ onOpenDownload, onNavigateToGuide, o
                 <div className="w-10 h-10 rounded-xl bg-purple-50 flex items-center justify-center text-xl mb-3 shadow-inner">
                   🔌
                 </div>
-                <p className="font-bold text-slate-800 text-sm">Add-ons Listos</p>
-                <p className="text-xs text-slate-400 mt-1">Soporte total de Kodi</p>
+                <p className="font-bold text-slate-800 text-sm">Add-ons Ilimitados</p>
+                <p className="text-xs text-slate-400 mt-1">Soporte total Kodi Nexus</p>
               </div>
             </div>
 
           </div>
 
-          {/* Right Column: Hero Mockup Frame (Clean Minimalism 48px rounded outer container) */}
+          {/* Right Column: Hero Mockup Frame */}
           <div className="lg:col-span-6 relative">
             
             {/* Ambient Background Glow */}
@@ -133,7 +164,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenDownload, onNavigateToGuide, o
                   <div className="hidden sm:flex items-center gap-1 bg-slate-950/60 p-1 rounded-xl border border-slate-800 text-xs">
                     <button
                       onClick={() => setActiveTab('movies')}
-                      className={`px-2.5 py-0.5 rounded-lg transition-all ${
+                      className={`px-2.5 py-0.5 rounded-lg transition-all cursor-pointer ${
                         activeTab === 'movies' ? 'bg-[#00D2FF] text-slate-950 font-bold' : 'text-slate-400 hover:text-white'
                       }`}
                     >
@@ -141,15 +172,15 @@ export const Hero: React.FC<HeroProps> = ({ onOpenDownload, onNavigateToGuide, o
                     </button>
                     <button
                       onClick={() => setActiveTab('tv')}
-                      className={`px-2.5 py-0.5 rounded-lg transition-all ${
+                      className={`px-2.5 py-0.5 rounded-lg transition-all cursor-pointer ${
                         activeTab === 'tv' ? 'bg-[#9D4EDD] text-white font-bold' : 'text-slate-400 hover:text-white'
                       }`}
                     >
-                      TV
+                      TV / IPTV
                     </button>
                     <button
                       onClick={() => setActiveTab('addons')}
-                      className={`px-2.5 py-0.5 rounded-lg transition-all ${
+                      className={`px-2.5 py-0.5 rounded-lg transition-all cursor-pointer ${
                         activeTab === 'addons' ? 'bg-purple-600 text-white font-bold' : 'text-slate-400 hover:text-white'
                       }`}
                     >
@@ -166,10 +197,10 @@ export const Hero: React.FC<HeroProps> = ({ onOpenDownload, onNavigateToGuide, o
                   {/* Status header */}
                   <div className="flex items-center justify-between text-xs">
                     <span className="font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-[#00D2FF] to-[#9D4EDD] text-sm">
-                      Kodi 21.2 Omega Engine
+                      Kodi Nexus 20.5 Engine
                     </span>
                     <span className="text-[10px] px-2 py-0.5 rounded-full bg-slate-800 text-cyan-400 font-mono">
-                      4K HDR • 60 FPS
+                      4K HDR • Multi-IP Ready
                     </span>
                   </div>
 
@@ -208,7 +239,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenDownload, onNavigateToGuide, o
                     </span>
                     <button
                       onClick={onNavigateToFeatures}
-                      className="text-[#9D4EDD] hover:underline font-bold"
+                      className="text-[#9D4EDD] hover:underline font-bold cursor-pointer"
                     >
                       Ver especificaciones →
                     </button>
@@ -227,7 +258,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenDownload, onNavigateToGuide, o
               </div>
               <div className="text-left">
                 <p className="font-bold text-xs sm:text-sm text-slate-900 leading-none">Sin Errores</p>
-                <p className="text-[10px] sm:text-xs text-slate-400 mt-0.5">Optimización 2.0</p>
+                <p className="text-[10px] sm:text-xs text-slate-400 mt-0.5">Kodi Nexus 20.5</p>
               </div>
             </div>
 

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { RoutePath } from '../types';
-import { ArrowLeft, Shield, HardDrive, Server, ExternalLink, Copy, Check, Printer, Mail, Lock, CheckCircle2 } from 'lucide-react';
+import { ArrowLeft, Shield, HardDrive, Server, ExternalLink, Copy, Check, Printer, Mail, Network } from 'lucide-react';
 
 interface PrivacyPolicyProps {
   onNavigate: (route: RoutePath) => void;
@@ -98,34 +98,43 @@ export const PrivacyPolicy: React.FC<PrivacyPolicyProps> = ({ onNavigate }) => {
 
           <section>
             <h2 className="text-lg font-bold text-slate-900 mb-3">
-              Information Collection and Use
+              Information Collection, Local IP Communication, and Use
             </h2>
             <p className="mb-4">
-              The Application is designed to function primarily as a local media player. The Service Provider <strong>does not directly collect, store, or transmit any personally identifiable information (PII)</strong> to external servers.
+              The Application is designed to function as a local media player and client interface. The Service Provider <strong>does not directly collect, store, or transmit any personally identifiable information (PII) or user tracking data to external servers</strong>.
             </p>
             <p className="mb-3 font-semibold text-slate-700">
-              To provide core media playback capabilities, the Application requires specific local device permissions:
+              To provide core media playback capabilities, the Application requests and utilizes specific local device permissions and network interfaces:
             </p>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
-              <div className="p-4 rounded-2xl bg-blue-50/60 border border-blue-100/80">
+            <div className="space-y-3 mb-4">
+              <div className="p-4 rounded-2xl bg-cyan-50/70 border border-cyan-100/80">
                 <div className="font-bold text-slate-900 text-sm mb-1 flex items-center gap-2">
-                  <HardDrive className="w-4 h-4 text-[#00D2FF]" />
-                  Storage Access
+                  <Network className="w-4 h-4 text-[#00D2FF]" />
+                  Local Network &amp; IP Communication (cachetv Integration)
                 </div>
-                <p className="text-xs text-slate-600">Used exclusively to read, index, and play local media files and user-installed add-ons selected on your device.</p>
+                <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
+                  The Application includes pre-configured local network requests (local IP addresses) to interface internally with <em>cachetv</em>—an open-source local IPTV streaming server module. These local requests operate exclusively within the user's local network or local loopback to enable stream capturing and playback. No device identifiers, personal data, or playback logs from local IP communications are collected or transmitted to external servers by the Service Provider.
+                </p>
               </div>
 
-              <div className="p-4 rounded-2xl bg-purple-50/60 border border-purple-100/80">
-                <div className="font-bold text-slate-900 text-sm mb-1 flex items-center gap-2">
-                  <Server className="w-4 h-4 text-[#9D4EDD]" />
-                  Network/Internet Access
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+                <div className="p-4 rounded-2xl bg-blue-50/60 border border-blue-100/80">
+                  <div className="font-bold text-slate-900 text-sm mb-1 flex items-center gap-2">
+                    <HardDrive className="w-4 h-4 text-[#00D2FF]" />
+                    Storage Access
+                  </div>
+                  <p className="text-xs text-slate-600">Used exclusively to read, index, and play local media files, caches, and user-installed add-ons selected on your device.</p>
                 </div>
-                <p className="text-xs text-slate-600">Used exclusively to stream online media content manually provided or configured by the user.</p>
+
+                <div className="p-4 rounded-2xl bg-purple-50/60 border border-purple-100/80">
+                  <div className="font-bold text-slate-900 text-sm mb-1 flex items-center gap-2">
+                    <Server className="w-4 h-4 text-[#9D4EDD]" />
+                    Internet / Network Access
+                  </div>
+                  <p className="text-xs text-slate-600">Used exclusively to fetch and stream online media content, playlists, or stream protocols provided by the user or local host.</p>
+                </div>
               </div>
             </div>
-            <p className="text-xs sm:text-sm text-slate-500">
-              Automated technical data (such as IP address, operating system version, or crash logs) may only be processed locally or via essential third-party framework services to ensure system stability and performance.
-            </p>
           </section>
 
           <section>
@@ -133,7 +142,7 @@ export const PrivacyPolicy: React.FC<PrivacyPolicyProps> = ({ onNavigate }) => {
               Cookies and Tracking Technologies
             </h2>
             <p>
-              The Application itself does not use cookies or tracking pixels. However, underlying core engine modules or essential system SDKs may use local temporary caching mechanisms required for media playback or network stream buffering.
+              The Application itself does not use cookies, tracking pixels, or user-tracking SDKs. Underlying core player components or local stream buffers operate locally on the device to maintain media playback stability.
             </p>
           </section>
 
@@ -142,7 +151,7 @@ export const PrivacyPolicy: React.FC<PrivacyPolicyProps> = ({ onNavigate }) => {
               Your Rights &amp; CCPA/CPRA Rights
             </h2>
             <p>
-              Because the Service Provider does not collect, store, or sell your personal data on external servers, no personal data is retained to be accessed, modified, or sold. If you have any privacy questions or wish to exercise statutory data protection rights, you may contact the Service Provider at{' '}
+              Because the Service Provider does not collect, store, or sell your personal data on external servers, no personal data is retained to be accessed, modified, or sold. If you have any privacy questions, you may contact the Service Provider at{' '}
               <a href="mailto:dengnis97@gmail.com" className="text-[#9D4EDD] font-semibold hover:underline">
                 dengnis97@gmail.com
               </a>.
@@ -164,7 +173,7 @@ export const PrivacyPolicy: React.FC<PrivacyPolicyProps> = ({ onNavigate }) => {
                   rel="noopener noreferrer"
                   className="text-[#00D2FF] font-semibold hover:underline inline-flex items-center gap-1"
                 >
-                  <span>Google Play Services Privacy Policy</span>
+                  <span>Google Play Services</span>
                   <ExternalLink className="w-3 h-3" />
                 </a>
               </li>
@@ -176,7 +185,7 @@ export const PrivacyPolicy: React.FC<PrivacyPolicyProps> = ({ onNavigate }) => {
               Data Disclosure and Legal Compliance
             </h2>
             <p>
-              The Service Provider does not monetize or trade user data. Disclosure of operational logs would only occur if explicitly required by applicable law, such as to comply with a valid court order or official legal subpoena.
+              The Service Provider does not monetize, process, or trade user data. Disclosure of operational logs would only occur if explicitly required by applicable law, such as to comply with a valid legal subpoena.
             </p>
           </section>
 
@@ -185,7 +194,7 @@ export const PrivacyPolicy: React.FC<PrivacyPolicyProps> = ({ onNavigate }) => {
               Children's Privacy
             </h2>
             <p>
-              The Application is a general-purpose media player and does not knowingly collect or target information from children under 16 years of age.
+              The Application is a general-purpose media player player and does not knowingly collect or target information from children under 16 years of age.
             </p>
           </section>
 
@@ -194,7 +203,7 @@ export const PrivacyPolicy: React.FC<PrivacyPolicyProps> = ({ onNavigate }) => {
               Security
             </h2>
             <p>
-              Since media files processed by the Application reside locally on your device or are requested directly from streams configured by you, security depends primarily on maintaining the security of your own mobile device.
+              Since media files and stream connections (including local IP streams) reside or execute locally on your device or network, security depends primarily on maintaining the security of your local network and mobile device.
             </p>
           </section>
 
