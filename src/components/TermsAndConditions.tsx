@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { RoutePath } from '../types';
-import { ArrowLeft, FileText, CheckCircle2, AlertTriangle, Scale, Code, Copy, Check, Printer } from 'lucide-react';
+import { ArrowLeft, FileText, ExternalLink, Copy, Check, Printer, Mail, AlertTriangle, Scale } from 'lucide-react';
 
 interface TermsAndConditionsProps {
   onNavigate: (route: RoutePath) => void;
@@ -23,7 +23,7 @@ export const TermsAndConditions: React.FC<TermsAndConditionsProps> = ({ onNaviga
   return (
     <div className="py-12 px-6 sm:px-10 lg:px-12 max-w-5xl mx-auto">
       
-      {/* Breadcrumb / Back button */}
+      {/* Navigation Header */}
       <div className="flex items-center justify-between mb-8">
         <button
           id="back-home-terms-btn"
@@ -52,94 +52,188 @@ export const TermsAndConditions: React.FC<TermsAndConditionsProps> = ({ onNaviga
         </div>
       </div>
 
-      {/* Main Terms Document Box - Clean Minimalism */}
+      {/* Main Document Container */}
       <div className="bg-white rounded-[32px] p-8 sm:p-12 border border-slate-100 shadow-sm relative overflow-hidden">
         
-        {/* Glow Top Line */}
+        {/* Neon Accent Line */}
         <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-[#9D4EDD] to-[#00D2FF]" />
 
-        {/* Header */}
+        {/* Header section */}
         <div className="border-b border-slate-100 pb-8 mb-8">
           <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-purple-50 text-[#9D4EDD] text-xs font-extrabold uppercase tracking-widest mb-4 border border-purple-100">
             <FileText className="w-3.5 h-3.5" />
-            <span>Términos Legales & Condiciones de Uso</span>
+            <span>Official Legal Agreement</span>
           </div>
 
           <h1 className="text-3xl sm:text-4xl font-black text-slate-900 tracking-tight">
-            Términos y Condiciones de Uso de Magic TV
+            Terms &amp; Conditions
           </h1>
 
           <div className="flex flex-wrap items-center gap-4 mt-3 text-xs text-slate-400">
-            <span><strong>Fecha de vigencia:</strong> 18 de Agosto de 2026</span>
+            <span><strong>Application:</strong> Magic TV for Kodi</span>
             <span>•</span>
-            <span><strong>Licencia:</strong> GNU General Public License v2.0 o superior (GPL v2+)</span>
+            <span><strong>Service Provider:</strong> DengnisR</span>
             <span>•</span>
-            <span><strong>Plataforma:</strong> Android (TV, Box, Móvil, Tablet)</span>
-          </div>
-
-          {/* Alert Callout */}
-          <div className="mt-6 p-4 rounded-2xl bg-purple-50/60 border border-purple-100 text-slate-600 text-xs leading-relaxed">
-            <strong className="text-purple-900 font-bold block mb-1">Descargo de Responsabilidad Fundamental:</strong>
-            Magic TV es un reproductor de medios neutral y de código abierto. No proporciona, hospeda ni distribuye contenido multimedia protegido con derechos de autor.
+            <span><strong>Effective Date:</strong> 2026-08-18</span>
           </div>
         </div>
 
-        {/* Body Content */}
+        {/* Body content */}
         <div id="terms-conditions-body" className="space-y-8 text-slate-600 text-sm sm:text-base leading-relaxed font-normal">
           
           <section>
-            <h2 className="text-xl font-bold text-slate-900 mb-3 flex items-center gap-2">
-              <span className="text-[#9D4EDD] font-black">1.</span> Aceptación de los Términos
+            <p className="text-base text-slate-700 leading-relaxed mb-3">
+              These terms and conditions apply to the <strong>Magic TV for Kodi</strong> mobile application (collectively, the "Application"), operated as a non-commercial project by <strong>DengnisR</strong> (referred to as the "Service Provider").
+            </p>
+            <p className="font-semibold text-slate-900">
+              By downloading, installing, or using the Application, you agree to be bound by these Terms and Conditions.
+            </p>
+          </section>
+
+          <section className="p-5 rounded-2xl bg-slate-50 border border-slate-100">
+            <h2 className="text-lg font-bold text-slate-900 mb-2">
+              Open Source License &amp; Derivative Work Notice
             </h2>
-            <p>
-              Al descargar, instalar o utilizar la aplicación <strong>Magic TV</strong>, el usuario declara haber leído, comprendido y aceptado en su totalidad estos Términos y Condiciones. Si no estás de acuerdo con alguna parte de estas condiciones, debes abstenerte de utilizar la aplicación.
+            <p className="text-sm text-slate-600 leading-relaxed">
+              The Application is an independent port based on the open-source code of <strong>Kodi®</strong>, distributed under the <strong>GNU General Public License v2 (GPLv2)</strong>. You are granted rights to use, inspect, and redistribute this software in compliance with the terms of the GPLv2 license.
             </p>
           </section>
 
           <section>
-            <h2 className="text-xl font-bold text-slate-900 mb-3 flex items-center gap-2">
-              <span className="text-[#9D4EDD] font-black">2.</span> Naturaleza del Software y Licencia GNU GPL
+            <h2 className="text-lg font-bold text-slate-900 mb-2">
+              Trademark Disclaimer
+            </h2>
+            <p>
+              <strong>Kodi®</strong> is a registered trademark of the <strong>XBMC Foundation</strong>. The Service Provider and this Application are entirely independent and are <strong>not affiliated with, authorized, sponsored, or endorsed by the XBMC Foundation</strong> or the official Kodi project. All trademarks, brand names, and logos belong to their respective owners.
+            </p>
+          </section>
+
+          <section>
+            <h2 className="text-lg font-bold text-slate-900 mb-3">
+              Acceptable Use &amp; User-Provided Content
             </h2>
             <p className="mb-3">
-              Magic TV es un port derivado del proyecto de código abierto Kodi (anteriormente XBMC). En estricto cumplimiento con la licencia <strong>GNU General Public License (GPL) v2.0 o posterior</strong>:
+              The Application is provided strictly as a neutral media playing interface. The Service Provider <strong>does not provide, host, bundle, or distribute any media content, channels, playlists, or add-ons</strong>.
             </p>
-            <ul className="list-disc pl-6 space-y-2 text-slate-600">
-              <li>El software se proporciona de manera libre y gratuita.</li>
-              <li>Tienes la libertad de ejecutar el programa para cualquier propósito legítimo.</li>
-              <li>Tienes la libertad de estudiar el funcionamiento del programa y adaptarlo a tus necesidades técnicas.</li>
+            <p className="mb-2 font-medium text-slate-700">
+              You agree that you are solely responsible for all content, streams, and media played through the Application. You agree not to use the Application to:
+            </p>
+            <ul className="list-disc pl-6 space-y-1.5 text-sm text-slate-600">
+              <li>Stream, view, or distribute copyrighted content without authorization from the copyright holder.</li>
+              <li>Access illegal or unauthorized media streams in your jurisdiction.</li>
+              <li>Engage in activities that violate local or international intellectual property laws.</li>
             </ul>
           </section>
 
           <section>
-            <h2 className="text-xl font-bold text-slate-900 mb-3 flex items-center gap-2">
-              <span className="text-[#9D4EDD] font-black">3.</span> Uso Adecuado y Responsabilidad del Usuario
+            <h2 className="text-lg font-bold text-slate-900 mb-2">
+              Intellectual Property Rights
+            </h2>
+            <p>
+              All core engine source components originating from Kodi remain licensed under GPLv2. Custom branding, specific interface configurations, and original non-GPL assets created by DengnisR remain protected by applicable copyright law, subject to GPLv2 compliance.
+            </p>
+          </section>
+
+          <section>
+            <h2 className="text-lg font-bold text-slate-900 mb-2">
+              Device Security &amp; Network Usage
+            </h2>
+            <p className="mb-2">
+              The Application requires internet connectivity to stream user-selected media. You are responsible for any data charges or roaming fees incurred with your mobile network provider while using the Application.
+            </p>
+            <p className="text-xs sm:text-sm text-slate-500">
+              Modifying your device's operating system (jailbreaking or rooting) may compromise device security and lead to unexpected software behavior.
+            </p>
+          </section>
+
+          <section>
+            <h2 className="text-lg font-bold text-slate-900 mb-2">
+              Third-Party Services
             </h2>
             <p className="mb-3">
-              Como usuario de Magic TV, reconoces y aceptas de forma expresa que:
+              The Application relies on Google Play Services infrastructure for system-level operational features:
             </p>
-            <ul className="list-disc pl-6 space-y-2 text-slate-600">
-              <li><strong>Contenido Propio:</strong> Eres el único responsable del origen, legalidad y licencias de los archivos multimedia (videos, audios, fotos) o transmisiones en vivo (listas M3U, servidores PVR, etc.) que decidas reproducir mediante la aplicación.</li>
-              <li><strong>Add-ons de Terceros:</strong> Cualquier complemento, repositorio o script adicional instalado por el usuario proviene de autores externos independientes. Magic TV no garantiza la estabilidad, legalidad ni continuidad de servicios de terceros.</li>
-              <li><strong>Uso no comercial:</strong> La aplicación no puede ser vendida ni revendida en paquetes de hardware precargados con contenido ilícito.</li>
+            <ul className="list-disc pl-6 space-y-1 text-sm text-slate-600">
+              <li>
+                <a
+                  href="https://policies.google.com/terms"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-[#9D4EDD] font-semibold hover:underline inline-flex items-center gap-1"
+                >
+                  <span>Google Play Services Terms of Service</span>
+                  <ExternalLink className="w-3 h-3" />
+                </a>
+              </li>
             </ul>
           </section>
 
-          <section>
-            <h2 className="text-xl font-bold text-slate-900 mb-3 flex items-center gap-2">
-              <span className="text-[#9D4EDD] font-black">4.</span> Exclusión de Garantías (Sin Garantía)
+          <section className="p-5 rounded-2xl bg-amber-50/70 border border-amber-200/80">
+            <h2 className="text-lg font-bold text-amber-950 mb-2 flex items-center gap-2">
+              <AlertTriangle className="w-4 h-4 text-amber-600" />
+              Limitation of Liability &amp; Disclaimer of Warranty
             </h2>
-            <p>
-              De conformidad con las cláusulas de la licencia GNU GPL, Magic TV se distribuye <em>"TAL CUAL"</em> (AS IS), sin garantías de ningún tipo, ya sean expresas o implícitas, incluyendo, entre otras, garantías de comerciabilidad, idoneidad para un fin específico o ausencia de errores en la reproducción en ciertos modelos de hardware Android.
+            <p className="text-xs sm:text-sm text-amber-900 leading-relaxed font-mono uppercase tracking-tight">
+              THE APPLICATION IS PROVIDED "AS IS" AND "AS AVAILABLE", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED. TO THE MAXIMUM EXTENT PERMITTED BY LAW, THE SERVICE PROVIDER SHALL NOT BE HELD LIABLE FOR ANY INDIRECT, INCIDENTAL, OR CONSEQUENTIAL DAMAGES, INCLUDING LOSS OF DATA, DEVICE DAMAGE, OR LEGAL ISSUES ARISING FROM USER-PROVIDED CONTENT OR UNFAIR USE OF STREAMING SOURCES.
             </p>
           </section>
 
           <section>
-            <h2 className="text-xl font-bold text-slate-900 mb-3 flex items-center gap-2">
-              <span className="text-[#9D4EDD] font-black">5.</span> Modificaciones a estos Términos
+            <h2 className="text-lg font-bold text-slate-900 mb-2">
+              Termination &amp; Updates
             </h2>
             <p>
-              Nos reservamos el derecho de actualizar estos términos en caso de que surjan nuevas versiones de la aplicación o requerimientos normativos aplicables. Se publicará la fecha de última actualización en el encabezado de este documento.
+              The Service Provider reserves the right to modify, update, or discontinue the Application (or any part thereof) at any time without prior notice. You may terminate these Terms at any time simply by uninstalling the Application from your device.
             </p>
+          </section>
+
+          <section>
+            <h2 className="text-lg font-bold text-slate-900 mb-2">
+              Governing Law and Jurisdiction
+            </h2>
+            <p>
+              These Terms and Conditions are governed by applicable local laws, excluding conflict of law principles. Any legal disputes shall be brought before the competent courts of the Service Provider's jurisdiction.
+            </p>
+          </section>
+
+          <section>
+            <h2 className="text-lg font-bold text-slate-900 mb-2">
+              DSA Compliance Notice (Digital Services Act)
+            </h2>
+            <p>
+              As a neutral, user-controlled media client that does not host, index, or distribute public third-party content on central servers, inquiries regarding moderation of user-loaded local content should be directed to the user or content host directly. Official communications can be submitted to{' '}
+              <a href="mailto:dengnis97@gmail.com" className="text-[#9D4EDD] font-semibold hover:underline">
+                dengnis97@gmail.com
+              </a>.
+            </p>
+          </section>
+
+          <section>
+            <h2 className="text-lg font-bold text-slate-900 mb-2">
+              Changes to These Terms and Conditions
+            </h2>
+            <p>
+              The Service Provider may update these Terms periodically. You are advised to review this page regularly. Changes take effect upon publication.
+            </p>
+            <p className="mt-2 font-semibold text-slate-700">
+              These terms and conditions are effective as of <strong>2026-08-18</strong>.
+            </p>
+          </section>
+
+          <section className="pt-4 border-t border-slate-100">
+            <h2 className="text-lg font-bold text-slate-900 mb-2">
+              Contact Us
+            </h2>
+            <p className="mb-2">
+              For questions or suggestions regarding these Terms and Conditions, please contact:
+            </p>
+            <a
+              href="mailto:dengnis97@gmail.com"
+              className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-purple-50 text-[#9D4EDD] font-bold text-sm hover:bg-purple-100 transition-colors"
+            >
+              <Mail className="w-4 h-4" />
+              <span>dengnis97@gmail.com</span>
+            </a>
           </section>
 
         </div>

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { RoutePath } from '../types';
-import { ArrowLeft, Shield, CheckCircle2, Lock, EyeOff, Server, HardDrive, Copy, Check, Printer } from 'lucide-react';
+import { ArrowLeft, Shield, HardDrive, Server, ExternalLink, Copy, Check, Printer, Mail, Lock, CheckCircle2 } from 'lucide-react';
 
 interface PrivacyPolicyProps {
   onNavigate: (route: RoutePath) => void;
@@ -23,7 +23,7 @@ export const PrivacyPolicy: React.FC<PrivacyPolicyProps> = ({ onNavigate }) => {
   return (
     <div className="py-12 px-6 sm:px-10 lg:px-12 max-w-5xl mx-auto">
       
-      {/* Breadcrumb / Back button */}
+      {/* Navigation Header */}
       <div className="flex items-center justify-between mb-8">
         <button
           id="back-home-privacy-btn"
@@ -52,104 +52,178 @@ export const PrivacyPolicy: React.FC<PrivacyPolicyProps> = ({ onNavigate }) => {
         </div>
       </div>
 
-      {/* Main Document Box - Clean Minimalism */}
+      {/* Main Document Container */}
       <div className="bg-white rounded-[32px] p-8 sm:p-12 border border-slate-100 shadow-sm relative overflow-hidden">
         
-        {/* Glow Top Line */}
+        {/* Neon Accent Line */}
         <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-[#00D2FF] to-[#9D4EDD]" />
 
-        {/* Header */}
+        {/* Header section */}
         <div className="border-b border-slate-100 pb-8 mb-8">
           <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-blue-50 text-[#00D2FF] text-xs font-extrabold uppercase tracking-widest mb-4 border border-blue-100">
             <Shield className="w-3.5 h-3.5" />
-            <span>Documento Legal Oficial</span>
+            <span>Official Privacy Document</span>
           </div>
 
           <h1 className="text-3xl sm:text-4xl font-black text-slate-900 tracking-tight">
-            Políticas de Privacidad de Magic TV
+            Privacy Policy
           </h1>
 
           <div className="flex flex-wrap items-center gap-4 mt-3 text-xs text-slate-400">
-            <span><strong>Última actualización:</strong> 18 de Agosto de 2026</span>
+            <span><strong>Application:</strong> Magic TV for Kodi</span>
             <span>•</span>
-            <span><strong>Versión del documento:</strong> 1.0 (Borrador Estructurado)</span>
+            <span><strong>Service Provider:</strong> DengnisR</span>
             <span>•</span>
-            <span><strong>Aplicación:</strong> Magic TV para Android (Port de Kodi)</span>
-          </div>
-
-          {/* Notice box */}
-          <div className="mt-6 p-4 rounded-2xl bg-blue-50/60 border border-blue-100 text-slate-600 text-xs leading-relaxed">
-            <strong className="text-blue-900 font-bold block mb-1">Nota para el administrador:</strong>
-            Esta plantilla incluye las cláusulas de privacidad estándar para un reproductor multimedia de código abierto derivado de Kodi. Puedes reemplazar o agregar tus cláusulas personalizadas en cualquier momento.
+            <span><strong>Effective Date:</strong> 2026-08-18</span>
           </div>
         </div>
 
-        {/* Body Content */}
+        {/* Body content */}
         <div id="privacy-policy-body" className="space-y-8 text-slate-600 text-sm sm:text-base leading-relaxed font-normal">
           
           <section>
-            <h2 className="text-xl font-bold text-slate-900 mb-3 flex items-center gap-2">
-              <span className="text-[#00D2FF] font-black">1.</span> Compromiso con la Privacidad del Usuario
+            <p className="text-base text-slate-700 leading-relaxed">
+              This privacy policy applies to the <strong>Magic TV for Kodi</strong> application for mobile devices (collectively, the "Application"), developed and operated as a non-commercial, non-profit project by <strong>DengnisR</strong> (referred to as the "Service Provider").
+            </p>
+          </section>
+
+          <section className="p-5 rounded-2xl bg-slate-50 border border-slate-100">
+            <h2 className="text-lg font-bold text-slate-900 mb-2">
+              Nature of the Application &amp; Open Source Disclaimer
             </h2>
-            <p>
-              En <strong>Magic TV</strong>, la privacidad de nuestros usuarios es un principio fundamental de diseño. Dado que Magic TV es una aplicación basada en el código abierto de Kodi (distribuida bajo la Licencia Pública General de GNU v2+), está diseñada para operar como una herramienta cliente completamente autónoma y neutral en el dispositivo del usuario.
+            <p className="text-sm text-slate-600 leading-relaxed">
+              The Application is an independent, non-official port and derivative work based on the open-source code of <strong>Kodi®</strong> (licensed under GNU General Public License v2). <strong>Kodi®</strong> is a registered trademark of the <strong>XBMC Foundation</strong>. This Application is not affiliated with, maintained, authorized, endorsed, or sponsored by the XBMC Foundation or the official Kodi development team.
             </p>
           </section>
 
           <section>
-            <h2 className="text-xl font-bold text-slate-900 mb-3 flex items-center gap-2">
-              <span className="text-[#00D2FF] font-black">2.</span> Datos que NO recopilamos
+            <h2 className="text-lg font-bold text-slate-900 mb-3">
+              Information Collection and Use
+            </h2>
+            <p className="mb-4">
+              The Application is designed to function primarily as a local media player. The Service Provider <strong>does not directly collect, store, or transmit any personally identifiable information (PII)</strong> to external servers.
+            </p>
+            <p className="mb-3 font-semibold text-slate-700">
+              To provide core media playback capabilities, the Application requires specific local device permissions:
+            </p>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+              <div className="p-4 rounded-2xl bg-blue-50/60 border border-blue-100/80">
+                <div className="font-bold text-slate-900 text-sm mb-1 flex items-center gap-2">
+                  <HardDrive className="w-4 h-4 text-[#00D2FF]" />
+                  Storage Access
+                </div>
+                <p className="text-xs text-slate-600">Used exclusively to read, index, and play local media files and user-installed add-ons selected on your device.</p>
+              </div>
+
+              <div className="p-4 rounded-2xl bg-purple-50/60 border border-purple-100/80">
+                <div className="font-bold text-slate-900 text-sm mb-1 flex items-center gap-2">
+                  <Server className="w-4 h-4 text-[#9D4EDD]" />
+                  Network/Internet Access
+                </div>
+                <p className="text-xs text-slate-600">Used exclusively to stream online media content manually provided or configured by the user.</p>
+              </div>
+            </div>
+            <p className="text-xs sm:text-sm text-slate-500">
+              Automated technical data (such as IP address, operating system version, or crash logs) may only be processed locally or via essential third-party framework services to ensure system stability and performance.
+            </p>
+          </section>
+
+          <section>
+            <h2 className="text-lg font-bold text-slate-900 mb-2">
+              Cookies and Tracking Technologies
+            </h2>
+            <p>
+              The Application itself does not use cookies or tracking pixels. However, underlying core engine modules or essential system SDKs may use local temporary caching mechanisms required for media playback or network stream buffering.
+            </p>
+          </section>
+
+          <section>
+            <h2 className="text-lg font-bold text-slate-900 mb-2">
+              Your Rights &amp; CCPA/CPRA Rights
+            </h2>
+            <p>
+              Because the Service Provider does not collect, store, or sell your personal data on external servers, no personal data is retained to be accessed, modified, or sold. If you have any privacy questions or wish to exercise statutory data protection rights, you may contact the Service Provider at{' '}
+              <a href="mailto:dengnis97@gmail.com" className="text-[#9D4EDD] font-semibold hover:underline">
+                dengnis97@gmail.com
+              </a>.
+            </p>
+          </section>
+
+          <section>
+            <h2 className="text-lg font-bold text-slate-900 mb-2">
+              Third Party Access and Services
             </h2>
             <p className="mb-3">
-              Magic TV no incluye telemetría oculta, rastreadores publicitarios ni servidores centrales de recopilación. En particular:
+              The Application utilizes essential third-party service infrastructure (such as Google Play Services) to support core operating system functionality. These services operate under their own independent privacy policies:
             </p>
-            <ul className="list-disc pl-6 space-y-2 text-slate-600">
-              <li><strong>Sin cuentas ni registros obligatorios:</strong> No solicitamos nombres, correos electrónicos, contraseñas ni números telefónicos.</li>
-              <li><strong>Sin historial de reproducción en la nube:</strong> La lista de películas, series, canales o música reproducida se almacena de forma estrictamente local en la base de datos SQLite de tu dispositivo Android.</li>
-              <li><strong>Sin acceso a geolocalización precisa:</strong> Magic TV no rastrea las coordenadas GPS de tu televisor o smartphone.</li>
+            <ul className="list-disc pl-6 space-y-1 text-sm text-slate-600">
+              <li>
+                <a
+                  href="https://www.google.com/policies/privacy/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-[#00D2FF] font-semibold hover:underline inline-flex items-center gap-1"
+                >
+                  <span>Google Play Services Privacy Policy</span>
+                  <ExternalLink className="w-3 h-3" />
+                </a>
+              </li>
             </ul>
           </section>
 
           <section>
-            <h2 className="text-xl font-bold text-slate-900 mb-3 flex items-center gap-2">
-              <span className="text-[#00D2FF] font-black">3.</span> Permisos requeridos en Android
-            </h2>
-            <p className="mb-3">Para garantizar el correcto funcionamiento del centro multimedia, Magic TV solicita los siguientes permisos en el sistema operativo Android:</p>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-3 mt-3">
-              <div className="p-4 rounded-2xl bg-slate-50 border border-slate-100">
-                <div className="font-bold text-slate-800 text-sm mb-1 flex items-center gap-2">
-                  <HardDrive className="w-4 h-4 text-[#00D2FF]" />
-                  Almacenamiento (READ / WRITE)
-                </div>
-                <p className="text-xs text-slate-500">Permite indexar y reproducir archivos locales (videos, subtítulos, carátulas y música) ubicados en la memoria interna o unidades USB.</p>
-              </div>
-
-              <div className="p-4 rounded-2xl bg-slate-50 border border-slate-100">
-                <div className="font-bold text-slate-800 text-sm mb-1 flex items-center gap-2">
-                  <Server className="w-4 h-4 text-[#9D4EDD]" />
-                  Acceso a Red (INTERNET / ACCESS_NETWORK_STATE)
-                </div>
-                <p className="text-xs text-slate-500">Necesario para descargar complementos desde repositorios, sincronizar con servidores locales NAS (SMB, NFS, DLNA) y reproducir transmisiones de video solicitadas por el usuario.</p>
-              </div>
-            </div>
-          </section>
-
-          <section>
-            <h2 className="text-xl font-bold text-slate-900 mb-3 flex items-center gap-2">
-              <span className="text-[#00D2FF] font-black">4.</span> Complementos y Servicios de Terceros (Add-ons)
+            <h2 className="text-lg font-bold text-slate-900 mb-2">
+              Data Disclosure and Legal Compliance
             </h2>
             <p>
-              Magic TV permite al usuario instalar complementos (Add-ons) desarrollados por terceros para Kodi. Dichos complementos se comunican directamente con los servicios externos que el usuario elija configurar (por ejemplo, YouTube, servicios de subtítulos, o servidores multimedia propios). Magic TV no intermedia, audita ni almacena el tráfico generado entre el complemento y sus respectivos proveedores externos.
+              The Service Provider does not monetize or trade user data. Disclosure of operational logs would only occur if explicitly required by applicable law, such as to comply with a valid court order or official legal subpoena.
             </p>
           </section>
 
           <section>
-            <h2 className="text-xl font-bold text-slate-900 mb-3 flex items-center gap-2">
-              <span className="text-[#00D2FF] font-black">5.</span> Contacto para Asuntos de Privacidad
+            <h2 className="text-lg font-bold text-slate-900 mb-2">
+              Children's Privacy
             </h2>
             <p>
-              Si tienes preguntas, sugerencias o inquietudes acerca de esta política de privacidad, puedes contactar al equipo de mantenimiento de Magic TV a través del repositorio oficial de la aplicación o al correo de soporte designado.
+              The Application is a general-purpose media player and does not knowingly collect or target information from children under 16 years of age.
             </p>
+          </section>
+
+          <section>
+            <h2 className="text-lg font-bold text-slate-900 mb-2">
+              Security
+            </h2>
+            <p>
+              Since media files processed by the Application reside locally on your device or are requested directly from streams configured by you, security depends primarily on maintaining the security of your own mobile device.
+            </p>
+          </section>
+
+          <section>
+            <h2 className="text-lg font-bold text-slate-900 mb-2">
+              Changes to This Privacy Policy
+            </h2>
+            <p>
+              The Service Provider may update this Privacy Policy periodically. You are advised to review this page regularly for any changes. Changes are effective immediately upon posting on this page.
+            </p>
+            <p className="mt-2 font-semibold text-slate-700">
+              This privacy policy is effective as of <strong>2026-08-18</strong>.
+            </p>
+          </section>
+
+          <section className="pt-4 border-t border-slate-100">
+            <h2 className="text-lg font-bold text-slate-900 mb-2">
+              Contact Us
+            </h2>
+            <p className="mb-2">
+              If you have any questions or concerns regarding privacy while using the Application, please contact the Service Provider via email at:
+            </p>
+            <a
+              href="mailto:dengnis97@gmail.com"
+              className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-purple-50 text-[#9D4EDD] font-bold text-sm hover:bg-purple-100 transition-colors"
+            >
+              <Mail className="w-4 h-4" />
+              <span>dengnis97@gmail.com</span>
+            </a>
           </section>
 
         </div>
