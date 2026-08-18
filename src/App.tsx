@@ -19,6 +19,23 @@ export default function App() {
   // Sync with Browser Hash for direct URLs (#privacy, #terms, etc.)
   useEffect(() => {
     const handleHashChange = () => {
+      // Check if arriving from a 404.html redirect
+      if (sessionStorage.redirect) {
+        const redirectUrl = sessionStorage.redirect;
+        delete sessionStorage.redirect;
+        try {
+          const url = new URL(redirectUrl);
+          const pathSegment = url.pathname.split('/').filter(Boolean).pop() as RoutePath;
+          if (['privacy', 'terms', 'features', 'guide', 'compatibility', 'faq'].includes(pathSegment)) {
+            setCurrentRoute(pathSegment);
+            window.location.hash = pathSegment;
+            return;
+          }
+        } catch {
+          // ignore parsing error
+        }
+      }
+
       const hash = window.location.hash.replace('#', '') as RoutePath;
       if (['privacy', 'terms', 'features', 'guide', 'compatibility', 'faq'].includes(hash)) {
         setCurrentRoute(hash);
